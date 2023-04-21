@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-pacman -Syu --noconfirm --needed base git svn
+pacman -Syu --noconfirm --needed sudo git svn
 
 useradd builder -m
 # When installing dependencies, makepkg will use sudo
