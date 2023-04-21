@@ -15,10 +15,10 @@ echo "builder ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers
 chmod -R a+rw .
 
 echo "${INPUT_REPOPKG}"
-echo $(basename "${INPUT_REPOPKG}")
+repoPkg=$(basename "${INPUT_REPOPKG}")
 
 if "${INPUT_SVN}"; then
-    sudo -u builder git svn clone "${INPUT_REPOURL}" --trunk=trunk/"${INPUT_REPOPKG}" "$(basename "${INPUT_REPOPKG}")"
+    sudo -u builder git svn clone "${INPUT_REPOURL}" --trunk=trunk/"${INPUT_REPOPKG}" ${repoPkg}
 else
     sudo -u builder git clone "${INPUT_REPOURL}" "${INPUT_REPOPKG}"
 fi
