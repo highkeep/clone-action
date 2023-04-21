@@ -1,0 +1,25 @@
+name: Git clone with SVN support
+author: Nick Marshall
+description: git [svn] clone
+branding:
+  color: blue
+  icon: chevron-up
+inputs:
+  repoUrl: 
+    description: "The git URL"
+    required: true
+    default: ""
+  repoPkg:
+    description: "The name of the target trunk and target directory"
+    required: true
+    default: ""
+  svn:
+    description: "If using svn"
+    required: false
+    default: false
+outputs:
+  repoPkg:
+    description: "The name of the target directory"
+runs:
+  using: 'docker'
+  image: 'Dockerfile'   
