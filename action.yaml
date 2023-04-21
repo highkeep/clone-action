@@ -6,15 +6,15 @@ branding:
   icon: chevron-up
 inputs:
   repoUrl: 
-    description: "The remote git URL"
+    description: "The remote git URL."
     required: true
     default: ""
   repoPkg:
-    description: "The name of the target trunk and basename of target directory"
+    description: "The name of the target trunk and basename of target directory."
     required: true
     default: ""
   svnTarget:
-    description: "If using svn"
+    description: "If clone requires svn."
     required: false
     default: false
 outputs:
