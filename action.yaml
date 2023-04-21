@@ -7,23 +7,19 @@ branding:
 inputs:
   repoUrl: 
     description: "The remote git URL"
-    type: string
     required: true
     default: ""
   repoPkg:
     description: "The name of the target trunk and basename of target directory"
-    type: string
     required: true
     default: ""
   svnTarget:
     description: "If using svn"
-    type: boolean
     required: false
     default: false
 outputs:
   repoPkg:
     description: "The name of the target directory"
-    type: string
 runs:
   using: 'docker'
   image: 'Dockerfile'   
