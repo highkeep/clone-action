@@ -17,9 +17,9 @@ chmod -R a+rw .
 if [ "${INPUT_SVNTARGET:-false}" == true ]; then
     sudo -u builder git svn clone "${INPUT_REPOURL}" --trunk=trunk/"${INPUT_REPOPKG}" "${INPUT_REPOPKG##*/}"
     echo $(git -C "${INPUT_REPOPKG##*/}" rev-parse HEAD) >>$GITHUB_OUTPUT
-    echo "repoPkg=${INPUT_REPOPKG##*/}" >>$GITHUB_OUTPUT
+    echo "pkg=${INPUT_REPOPKG##*/}" >>$GITHUB_OUTPUT
 else
     sudo -u builder git clone "${INPUT_REPOURL}" "${INPUT_REPOPKG}"
     echo $(git -C "${INPUT_REPOPKG}" rev-parse HEAD) >>$GITHUB_OUTPUT
-    echo "repoPkg=${INPUT_REPOPKG}" >>$GITHUB_OUTPUT
+    echo "pkg=${INPUT_REPOPKG}" >>$GITHUB_OUTPUT
 fi

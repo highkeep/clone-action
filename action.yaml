@@ -18,10 +18,10 @@ inputs:
     required: false
     default: false
 outputs:
-  repoPkg:
-    description: "The name of the target directory"
+  pkg:
+    description: "The name of the package / target directory"
   pkgRef:
-    description: "Performed git rev-parse HEAD on target directory"
+    description: "Performed git rev-parse HEAD on the package / target directory"
 runs:
   using: 'docker'
   image: 'Dockerfile'   
