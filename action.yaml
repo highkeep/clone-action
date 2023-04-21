@@ -10,7 +10,7 @@ inputs:
     required: true
     default: ""
   repoPkg:
-    description: "The name of the target trunk and target directory"
+    description: "The name of the target trunk and basename of target directory"
     required: true
     default: ""
   svn:
