@@ -20,6 +20,8 @@ inputs:
 outputs:
   repoPkg:
     description: "The name of the target directory"
+  pkgRef:
+    description: "Performed git rev-parse HEAD on target directory"
 runs:
   using: 'docker'
   image: 'Dockerfile'   
