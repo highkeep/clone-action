@@ -14,7 +14,7 @@ echo "builder ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers
 # Give all users (particularly builder) full access to these files
 chmod -R a+rw .
 
-if "${INPUT_SVN}"; then
+if [ "${INPUT_SVN:-false}" == true ]; then
     echo "svn=true"
     #sudo -u builder git svn clone "${INPUT_REPOURL}" --trunk=trunk/"${INPUT_REPOPKG}" "${INPUT_REPOPKG##*/}"
 else
