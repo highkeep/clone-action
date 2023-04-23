@@ -17,6 +17,9 @@ useradd runner -m -u 1001 -g 123
 # Give user `runner` passwordless sudo access
 echo "runner ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers
 
+# Give all users (particularly runner) full access to these files
+chmod -R a+rw .
+
 # Set up sudo cmd to make life a little easier
 sudoCMD="sudo -H -u runner"
 
