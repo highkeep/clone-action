@@ -4,17 +4,21 @@ set -euo pipefail
 # Install required packages
 pacman -Syu --noconfirm --needed sudo git svn
 
-# Added builder as seen in edlanglois/pkgbuild-action - mainly for permissions
-useradd builder -m
-# When installing dependencies, makepkg will use sudo
-# Give user `builder` passwordless sudo access
-echo "builder ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers
+# ls -l within ubuntu-latest shows owner of clone is runner and group is docker
+# id of runner user: uid=1001(runner) gid=123(docker) groups=123(docker),4(adm),101(systemd-journal)
+# So lets match that from now on...
 
-# Give all users (particularly builder) full access to these files
-chmod -R a+rw .
+# Add docker group
+groupadd -g 123 docker
+
+# Add runner user
+useradd runner -m -u 1001 -g 123
+# When installing dependencies, makepkg will use sudo
+# Give user `runner` passwordless sudo access
+echo "runner ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers
 
 # Set up sudo cmd to make life a little easier
-sudoCMD="sudo -H -u builder"
+sudoCMD="sudo -H -u runner"
 
 if [ "${INPUT_SVNTARGET:-false}" == true ]; then
     echo "Cloning: ${INPUT_REPOURL} into: ${INPUT_REPOPKG##*/}"
